@@ -19,6 +19,8 @@ app.use(requestLogger)
 
 app.use(cors())
 
+app.use(express.static('build'))
+
 app.get('/unsplash', async (req, res) => {
   axios
     .get(

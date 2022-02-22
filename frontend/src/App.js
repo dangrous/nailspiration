@@ -8,13 +8,13 @@ function App() {
   const [type, setType] = useState('britney')
 
   const getRandomUnsplashPhoto = async () => {
-    const response = await axios.get('http://localhost:3001/unsplash')
+    const response = await axios.get('/unsplash')
     setImageUrl(response.data.urls.regular)
     setType('unsplash')
   }
 
   const getRandomArtPiece = async () => {
-    let response = await axios.get('http://localhost:3001/smithsonian')
+    let response = await axios.get('/smithsonian')
     let itWorked = false
     let tries = 0
     while (!itWorked && tries < 10) {
@@ -27,14 +27,14 @@ function App() {
         itWorked = true
       } catch (error) {
         console.log(error)
-        response = await axios.get('http://localhost:3001/smithsonian')
+        response = await axios.get('/smithsonian')
         tries += 1
       }
     }
   }
 
   const getRandomWallpaperPhoto = async () => {
-    const response = await axios.get('http://localhost:3001/wallpaper')
+    const response = await axios.get('/wallpaper')
     const regexp = /<img class="d-block.+?products\/(.+?)_.+?>/g
 
     const images = [...response.data.matchAll(regexp)]
