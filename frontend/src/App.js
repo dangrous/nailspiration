@@ -2,18 +2,24 @@ import { useState } from 'react'
 import axios from 'axios'
 import './index.css'
 import britney from './102718556_110509810541787_5291478769340234028_n.jpg'
+import loader from './loader.gif'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   const [imageUrl, setImageUrl] = useState(britney)
   const [type, setType] = useState('britney')
+  const [unsplashRequests, setUnsplashRequests] = useState(null)
 
   const getRandomUnsplashPhoto = async () => {
+    setImageUrl(loader)
     const response = await axios.get('/unsplash')
-    setImageUrl(response.data.urls.regular)
+    setImageUrl(response.data.urls.regular || britney)
     setType('unsplash')
+    setUnsplashRequests(response.data.remaining)
   }
 
   const getRandomArtPiece = async () => {
+    setImageUrl(loader)
     let response = await axios.get('/smithsonian')
     let itWorked = false
     let tries = 0
@@ -31,9 +37,14 @@ function App() {
         tries += 1
       }
     }
+
+    if (!itWorked) {
+      setImageUrl('britney')
+    }
   }
 
   const getRandomWallpaperPhoto = async () => {
+    setImageUrl(loader)
     const response = await axios.get('/wallpaper')
     const regexp = /<img class="d-block.+?products\/(.+?)_.+?>/g
 
@@ -48,21 +59,74 @@ function App() {
       randomWallpaper = links[Math.floor(Math.random() * links.length)]
       tries += 1
     }
-    setImageUrl(randomWallpaper)
+    setImageUrl(randomWallpaper || britney)
+
     setType('wallpaper')
   }
 
   return (
-    <div className='App'>
-      <div>What about this one?</div>
-      {imageUrl ? <img src={imageUrl} alt='' /> : <img src={britney} alt='' />}
-      <button onClick={getRandomUnsplashPhoto}>Try a random photo</button>
-      <button onClick={getRandomWallpaperPhoto}>
-        Try a random wallpaper pattern
-      </button>
-      <button onClick={getRandomArtPiece}>
-        Try a random piece of art from the Smithsonian
-      </button>
+    <div className='App text-center'>
+      <div className='row justify-content-md-center'>
+        <h1 className='display-1'>
+          Need some inspiration for your next nail design?
+        </h1>
+        <p className='lead'>
+          Britney's here to help! Click any button below to find your muse.
+        </p>
+      </div>
+      <div className='row mb-3'>
+        <div className='container col-sm-5'>
+          <button
+            type='button'
+            className='btn btn-outline-dark'
+            onClick={getRandomUnsplashPhoto}
+            disabled={unsplashRequests !== null && unsplashRequests === 0}
+          >
+            {unsplashRequests !== null && unsplashRequests === 0
+              ? 'Sorry, wait for the next hour!'
+              : 'Try a random photo'}
+          </button>
+          <button
+            type='button'
+            className='btn btn-outline-dark'
+            onClick={getRandomWallpaperPhoto}
+          >
+            Try a wallpaper pattern
+          </button>
+          <button
+            type='button'
+            className='btn btn-outline-dark'
+            onClick={getRandomArtPiece}
+          >
+            Try something from the Smithsonian
+          </button>
+          <button
+            type='button'
+            className='btn btn-outline-dark'
+            onClick={() => {
+              setImageUrl(britney)
+            }}
+          >
+            Back to Britney
+          </button>
+        </div>
+      </div>
+      <div className='row text-center'>
+        <div className='container col-sm-5 text-center'>
+          <img
+            src={imageUrl}
+            className='col-sm-12 rounded-3 mb-3 shadow'
+            alt=''
+          />
+          <p className='fw-lighter fst-italic'>
+            The "Try a random photo" button can only be clicked 50 times an
+            hour, due to something something tech tech tech. You've got{' '}
+            {unsplashRequests || 'an unknown amount of'}{' '}
+            {unsplashRequests === 1 ? 'click' : 'clicks'} left. If the button is
+            greyed out, just wait until the top of the hour!
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
