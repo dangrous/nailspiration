@@ -67,7 +67,7 @@ function App() {
   return (
     <div className='App text-center m-3'>
       <div className='row justify-content-md-center'>
-        <h1 className='display-1'>
+        <h1 className='display-1 col-sm-10'>
           Need some inspiration for your next nail design?
         </h1>
         <p className='lead'>

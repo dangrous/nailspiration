@@ -36,8 +36,9 @@ h1 {
 
 .btn {
   font-family: 'Sen-Regular';
-  background-color: #ee4a9c !important;
+  background-color: #70e4e4 !important;
   border-color: #ee4a9c !important;
+  color: #ee4a9c !important;
 }
 
 p {
