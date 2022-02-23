@@ -27,6 +27,8 @@ app.get('/unsplash', async (req, res) => {
       `http://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_ACCESS_KEY}`
     )
     .then((response) => {
+      console.log(response.headers['x-ratelimit-remaining'])
+      response.data.remaining = response.headers['x-ratelimit-remaining']
       res.send(response.data)
     })
     .catch((error) => {
