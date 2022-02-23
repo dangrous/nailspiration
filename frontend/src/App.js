@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './index.css'
-import britney from './102718556_110509810541787_5291478769340234028_n.jpg'
-import loader from './loader.gif'
+import britney from './images/britney.jpg'
+import loader from './images/loader.gif'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
   }
 
   return (
-    <div className='App text-center'>
+    <div className='App text-center m-3'>
       <div className='row justify-content-md-center'>
         <h1 className='display-1'>
           Need some inspiration for your next nail design?
@@ -78,7 +78,7 @@ function App() {
         <div className='container col-sm-5'>
           <button
             type='button'
-            className='btn btn-outline-dark'
+            className='btn btn-primary m-1'
             onClick={getRandomUnsplashPhoto}
             disabled={unsplashRequests !== null && unsplashRequests === 0}
           >
@@ -88,21 +88,21 @@ function App() {
           </button>
           <button
             type='button'
-            className='btn btn-outline-dark'
+            className='btn btn-primary m-1'
             onClick={getRandomWallpaperPhoto}
           >
             Try a wallpaper pattern
           </button>
           <button
             type='button'
-            className='btn btn-outline-dark'
+            className='btn btn-primary m-1'
             onClick={getRandomArtPiece}
           >
             Try something from the Smithsonian
           </button>
           <button
             type='button'
-            className='btn btn-outline-dark'
+            className='btn btn-primary m-1'
             onClick={() => {
               setImageUrl(britney)
             }}
@@ -112,12 +112,8 @@ function App() {
         </div>
       </div>
       <div className='row text-center'>
-        <div className='container col-sm-5 text-center'>
-          <img
-            src={imageUrl}
-            className='col-sm-12 rounded-3 mb-3 shadow'
-            alt=''
-          />
+        <div className='container col-lg-5 text-center'>
+          <img src={imageUrl} className='col-sm-12 mb-3 shadow p-auto' alt='' />
           <p className='fw-lighter fst-italic'>
             The "Try a random photo" button can only be clicked 50 times an
             hour, due to something something tech tech tech. You've got{' '}

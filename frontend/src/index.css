@@ -1,19 +1,45 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Shrikhand-Regular';
+  src: local('Shrikhand-Regular'),
+    url('./fonts/Shrikhand-Regular.ttf') format('truetype');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+@font-face {
+  font-family: 'Sen-Regular';
+  src: local('Sen-Regular'), url('./fonts/Sen-Regular.ttf') format('truetype');
+}
+
 img {
   width: 100%;
   height: 500px;
   object-fit: contain;
-  background-color: white;
+  background-color: #f1f2f3;
+  border-radius: 15px;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-image: url('./images/bgimage.jpg');
+  background-size: cover;
+  background-color: red;
+}
+
+h1 {
+  font-family: 'Shrikhand-Regular';
+  color: #ee4a9c;
+}
+
+.lead {
+  font-family: 'Sen-Regular';
+}
+
+.btn {
+  font-family: 'Sen-Regular';
+  background-color: #ee4a9c !important;
+  border-color: #ee4a9c !important;
+}
+
+p {
+  font-family: 'Sen-Regular';
 }
