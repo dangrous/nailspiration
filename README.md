@@ -8,7 +8,7 @@ The application makes use of the [Unsplash API](https://unsplash.com/developers)
 
 The app could relatively easily have been created without an associated back end, but this way allows for the use of a `.env` file with API credentials, rather than storing them in the clear. This also keeps the front end simple.
 
-This project is built with React on the front end and Node.js on the backend, and the front end was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built with React on the front end and Node.js on the back end, and the front end was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live Link
 
@@ -16,9 +16,9 @@ A version of this application is running on Heroku [here](http://www.ishmanail.x
 
 ## To Run
 
-Run `npm install` in both the front end and backend directories.
+Run `npm install` in both the front end and back end directories.
 
-You can either run the ends separately, using `npm start` in each directory, or you can build the front end into the backend using first `npm run build` and then `cp -r ../backend` in the frontend directory. Then you'll be able to simply `npm start` in the backend directory and be good to go!
+You can either run the ends separately, using `npm start` in each directory, or you can build the front end into the back end using first `npm run build` and then `cp -r ../backend` in the `/frontend` directory. Then you'll be able to simply `npm start` in the `/backend` directory and be good to go!
 
 ## License
 
