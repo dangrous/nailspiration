@@ -8,7 +8,7 @@ The application makes use of the [Unsplash API](https://unsplash.com/developers)
 
 The app could relatively easily have been created without an associated back end, but this way allows for the use of a `.env` file with API credentials, rather than storing them in the clear. This also keeps the front end simple.
 
-This project is built with React on the front end and Node.js on the back end, and the front end was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built with React on the front end (styled with Bootstrap) and Node.js on the back end, and the front end was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live Link
 
